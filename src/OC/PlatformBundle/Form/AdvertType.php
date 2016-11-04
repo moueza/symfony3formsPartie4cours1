@@ -8,11 +8,10 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class AdvertType extends AbstractType {
 
@@ -28,8 +27,8 @@ class AdvertType extends AbstractType {
                 ->add('content', TextareaType::class)
                 ->add('published', CheckboxType::class, array('required' => false))
                 ->add('image', ImageType::class) // Ajoutez cette ligne
-                
-                 /*
+
+                /*
 
                  * Rappel :
 
@@ -45,6 +44,11 @@ class AdvertType extends AbstractType {
                     'allow_add' => true,
                     'allow_delete' => true
                 ))
+//                ->add('categories', EntityType::class, array(
+//                    'class' => 'OCPlatformBundle:Category',
+//                    'choice_label' => 'name',
+//                    'multiple' => true,
+//                ))
                 ->add('save', SubmitType::class);
     }
 
