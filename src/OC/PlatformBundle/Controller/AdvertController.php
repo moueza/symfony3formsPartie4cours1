@@ -86,22 +86,7 @@ class AdvertController extends Controller {
         // On crée un objet Advert
 
         $advert = new Advert();
-
-// Ici, on préremplit avec la date d'aujourd'hui, par exemple
-// Cette date sera donc préaffichée dans le formulaire, cela facilite le travail de l'utilisateur
-        $advert->setDate(new \Datetime());
-
-        // J'ai raccourci cette partie, car c'est plus rapide à écrire !
-        $form = $this->get('form.factory')->createBuilder(FormType::class, $advert)
-                ->add('date', DateType::class)
-                ->add('title', TextType::class)
-                ->add('content', TextareaType::class)
-                ->add('author', TextType::class)
-                ->add('published', CheckboxType::class, array('required' => false))
-                ->add('save', SubmitType::class)
-                ->getForm()
-
-        ;
+        $form = $this->createForm(AdvertType::class, $advert);
 
 
         // Si la requête est en POST
