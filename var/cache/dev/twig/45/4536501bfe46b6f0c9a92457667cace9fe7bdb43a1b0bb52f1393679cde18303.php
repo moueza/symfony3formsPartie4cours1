@@ -15,8 +15,8 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b4543f64dc5047f4362bca8871a5974b811d20fbe7a7dc664a8e3e270228db62 = $this->env->getExtension("native_profiler");
-        $__internal_b4543f64dc5047f4362bca8871a5974b811d20fbe7a7dc664a8e3e270228db62->enter($__internal_b4543f64dc5047f4362bca8871a5974b811d20fbe7a7dc664a8e3e270228db62_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "OCPlatformBundle:Advert:form.html.twig"));
+        $__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815 = $this->env->getExtension("native_profiler");
+        $__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815->enter($__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "OCPlatformBundle:Advert:form.html.twig"));
 
         // line 2
         echo "
@@ -28,17 +28,17 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
 <div class=\"well\">
 
+
     ";
-        // line 12
+        // line 13
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("attr" => array("class" => "form-horizontal")));
+        echo "
+
+    ";
+        // line 15
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "categories", array()), 'row');
         echo "
     <a href=\"#\" id=\"add_category\" class=\"btn btn-default\">Ajouter une catégorie</a>
-
-
-    ";
-        // line 16
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("attr" => array("class" => "form-horizontal")));
-        echo "
 
 
     ";
@@ -163,38 +163,33 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
         // line 94
         echo "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
 
-
 ";
-        // line 98
+        // line 97
         echo "<script type=\"text/javascript\">
     \$(document).ready(function () {
         // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
         var \$container = \$('div#advert_categories');
 
-
         // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
         var index = \$container.find(':input').length;
-
 
         // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
         \$('#add_category').click(function (e) {
             addCategory(\$container);
+
             e.preventDefault(); // évite qu'un # apparaisse dans l'URL
             return false;
         });
-
 
         // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
         if (index == 0) {
             addCategory(\$container);
         } else {
-
             // S'il existe déjà des catégories, on ajoute un lien de suppression pour chacune d'entre elles
             \$container.children('div').each(function () {
                 addDeleteLink(\$(this));
             });
         }
-
 
         // La fonction qui ajoute un formulaire CategoryType
         function addCategory(\$container) {
@@ -206,18 +201,14 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
                     .replace(/__name__/g, index)
                     ;
 
-
             // On crée un objet jquery qui contient ce template
             var \$prototype = \$(template);
-
 
             // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
             addDeleteLink(\$prototype);
 
-
             // On ajoute le prototype modifié à la fin de la balise <div>
             \$container.append(\$prototype);
-
 
             // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
             index++;
@@ -227,20 +218,22 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
         function addDeleteLink(\$prototype) {
             // Création du lien
             var \$deleteLink = \$('<a href=\"#\" class=\"btn btn-danger\">Supprimer</a>');
+
             // Ajout du lien
             \$prototype.append(\$deleteLink);
+
             // Ajout du listener sur le clic du lien pour effectivement supprimer la catégorie
             \$deleteLink.click(function (e) {
                 \$prototype.remove();
+
                 e.preventDefault(); // évite qu'un # apparaisse dans l'URL
                 return false;
             });
         }
     });
-
 </script>";
         
-        $__internal_b4543f64dc5047f4362bca8871a5974b811d20fbe7a7dc664a8e3e270228db62->leave($__internal_b4543f64dc5047f4362bca8871a5974b811d20fbe7a7dc664a8e3e270228db62_prof);
+        $__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815->leave($__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815_prof);
 
     }
 
@@ -256,7 +249,7 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
     public function getDebugInfo()
     {
-        return array (  169 => 98,  164 => 94,  155 => 87,  149 => 84,  143 => 78,  140 => 77,  134 => 73,  129 => 71,  119 => 64,  112 => 60,  107 => 58,  102 => 55,  92 => 47,  89 => 46,  81 => 40,  78 => 39,  72 => 35,  69 => 34,  64 => 30,  58 => 26,  55 => 25,  49 => 21,  46 => 20,  40 => 16,  33 => 12,  25 => 6,  22 => 2,);
+        return array (  168 => 97,  164 => 94,  155 => 87,  149 => 84,  143 => 78,  140 => 77,  134 => 73,  129 => 71,  119 => 64,  112 => 60,  107 => 58,  102 => 55,  92 => 47,  89 => 46,  81 => 40,  78 => 39,  72 => 35,  69 => 34,  64 => 30,  58 => 26,  55 => 25,  49 => 21,  46 => 20,  39 => 15,  34 => 13,  25 => 6,  22 => 2,);
     }
 }
 /* {# src/OC/PlatformBundle/Resources/views/Advert/form.html.twig #}*/
@@ -270,11 +263,11 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 /* */
 /* <div class="well">*/
 /* */
-/*     {{ form_row(form.categories) }}*/
-/*     <a href="#" id="add_category" class="btn btn-default">Ajouter une catégorie</a>*/
-/* */
 /* */
 /*     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}*/
+/* */
+/*     {{ form_row(form.categories) }}*/
+/*     <a href="#" id="add_category" class="btn btn-default">Ajouter une catégorie</a>*/
 /* */
 /* */
 /*     {# Les erreurs générales du formulaire. #}*/
@@ -354,37 +347,32 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 /*    mais si vous l'avez en local, changez simplement l'adresse. #}*/
 /* <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>*/
 /* */
-/* */
 /* {# Voici le script en question : #}*/
 /* <script type="text/javascript">*/
 /*     $(document).ready(function () {*/
 /*         // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.*/
 /*         var $container = $('div#advert_categories');*/
 /* */
-/* */
 /*         // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement*/
 /*         var index = $container.find(':input').length;*/
-/* */
 /* */
 /*         // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.*/
 /*         $('#add_category').click(function (e) {*/
 /*             addCategory($container);*/
+/* */
 /*             e.preventDefault(); // évite qu'un # apparaisse dans l'URL*/
 /*             return false;*/
 /*         });*/
-/* */
 /* */
 /*         // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).*/
 /*         if (index == 0) {*/
 /*             addCategory($container);*/
 /*         } else {*/
-/* */
 /*             // S'il existe déjà des catégories, on ajoute un lien de suppression pour chacune d'entre elles*/
 /*             $container.children('div').each(function () {*/
 /*                 addDeleteLink($(this));*/
 /*             });*/
 /*         }*/
-/* */
 /* */
 /*         // La fonction qui ajoute un formulaire CategoryType*/
 /*         function addCategory($container) {*/
@@ -396,18 +384,14 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 /*                     .replace(/__name__/g, index)*/
 /*                     ;*/
 /* */
-/* */
 /*             // On crée un objet jquery qui contient ce template*/
 /*             var $prototype = $(template);*/
-/* */
 /* */
 /*             // On ajoute au prototype un lien pour pouvoir supprimer la catégorie*/
 /*             addDeleteLink($prototype);*/
 /* */
-/* */
 /*             // On ajoute le prototype modifié à la fin de la balise <div>*/
 /*             $container.append($prototype);*/
-/* */
 /* */
 /*             // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro*/
 /*             index++;*/
@@ -417,15 +401,17 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 /*         function addDeleteLink($prototype) {*/
 /*             // Création du lien*/
 /*             var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');*/
+/* */
 /*             // Ajout du lien*/
 /*             $prototype.append($deleteLink);*/
+/* */
 /*             // Ajout du listener sur le clic du lien pour effectivement supprimer la catégorie*/
 /*             $deleteLink.click(function (e) {*/
 /*                 $prototype.remove();*/
+/* */
 /*                 e.preventDefault(); // évite qu'un # apparaisse dans l'URL*/
 /*                 return false;*/
 /*             });*/
 /*         }*/
 /*     });*/
-/* */
 /* </script>*/
