@@ -39,16 +39,16 @@ class AdvertType extends AbstractType {
                  * * - 3e argument : tableau d'options du champ
 
                  */
-                ->add('categories', CollectionType::class, array(
-                    'entry_type' => CategoryType::class,
-                    'allow_add' => true,
-                    'allow_delete' => true
-                ))
-//                ->add('categories', EntityType::class, array(
-//                    'class' => 'OCPlatformBundle:Category',
-//                    'choice_label' => 'name',
-//                    'multiple' => true,
+//                ->add('categories', CollectionType::class, array(
+//                    'entry_type' => CategoryType::class,
+//                    'allow_add' => true,
+//                    'allow_delete' => true
 //                ))
+                ->add('categories', EntityType::class, array(
+                    'class' => 'OCPlatformBundle:Category',
+                    'choice_label' => 'name',
+                    'multiple' => true,
+                ))
                 ->add('save', SubmitType::class);
     }
 
