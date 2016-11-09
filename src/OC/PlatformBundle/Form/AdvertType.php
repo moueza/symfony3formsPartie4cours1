@@ -11,11 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
-
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
-
 
 class AdvertType extends AbstractType {
 
@@ -24,6 +20,10 @@ class AdvertType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        // Arbitrairement, on récupère toutes les catégories qui commencent par "D"
+
+        $pattern = 'D%';
+
         $builder
                 ->add('date', DateTimeType::class)
                 ->add('title', TextType::class)
@@ -48,10 +48,19 @@ class AdvertType extends AbstractType {
 //                    'allow_add' => true,
 //                    'allow_delete' => true
 //                ))
+//                ->add('categories', EntityType::class, array(
+//                    'class' => 'OCPlatformBundle:Category',
+//                    'choice_label' => 'name',
+//                    'multiple' => true,
+//                ))
                 ->add('categories', EntityType::class, array(
                     'class' => 'OCPlatformBundle:Category',
                     'choice_label' => 'name',
                     'multiple' => true,
+                    'query_builder' => function(CategoryRepository $repository) use($pattern) {
+
+                        return $repository->getLikeQueryBuilder($pattern);
+                    }
                 ))
                 ->add('save', SubmitType::class);
     }

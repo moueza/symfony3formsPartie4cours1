@@ -121,3 +121,5 @@ da63b3,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/ap
 a1e3c1,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478678364,,200
 5d9e51,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478678412,,302
 130dd4,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478678527,,302
+6fbf15,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478680592,26f186,200
+26f186,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478680592,,500
