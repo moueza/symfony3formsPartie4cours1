@@ -157,3 +157,14 @@ b6546f,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/a
 89d6a3,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/edit/1,1478765033,,302
 bcef3a,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478765041,296d92,200
 296d92,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/advert/1,1478765041,,200
+cccbe1,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478766382,c11029,200
+c11029,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478766382,,500
+6733e1,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478766443,023e66,200
+023e66,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478766443,,500
+425e6c,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478766472,38c824,200
+38c824,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478766472,,200
+b5fc75,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478766513,,302
+10307f,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478766520,dd628c,200
+dd628c,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/advert/21,1478766520,,200
+cb3252,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478766535,27f739,200
+27f739,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/advert/21,1478766535,,200

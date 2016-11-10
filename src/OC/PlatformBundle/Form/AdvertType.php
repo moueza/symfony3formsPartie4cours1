@@ -12,8 +12,10 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 use OC\PlatformBundle\Repository\CategoryRepository;
+// N'oubliez pas ces deux use !
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class AdvertType extends AbstractType {
 
@@ -22,8 +24,13 @@ class AdvertType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+
+
         // Arbitrairement, on récupère toutes les catégories qui commencent par "D" D%
         $pattern = 'c%';
+
+//             // Ajoutez ici tous vos champs sauf le champ published
+//        $builder = ...;
 
         $builder
                 ->add('date', DateTimeType::class)
@@ -59,6 +66,32 @@ class AdvertType extends AbstractType {
                     }
                 ))
                 ->add('save', SubmitType::class);
+
+
+
+        // On ajoute une fonction qui va écouter un évènement
+        $builder->addEventListener(
+                FormEvents::PRE_SET_DATA, // 1er argument : L'évènement qui nous intéresse : ici, PRE_SET_DATA
+                function(FormEvent $event) {
+            // 2e argument : La fonction à exécuter lorsque l'évènement est déclenché
+            // On récupère notre objet Advert sous-jacent
+            $advert = $event->getData();
+
+
+            // Cette condition est importante, on en reparle plus loin
+            if (null === $advert) {
+                return; // On sort de la fonction sans rien faire lorsque $advert vaut null
+            }
+            // Si l'annonce n'est pas publiée, ou si elle n'existe pas encore en base (id est null)
+            if (!$advert->getPublished() || null === $advert->getId()) {
+                // Alors on ajoute le champ published
+                $event->getForm()->add('published', CheckboxType::class, array('required' => false));
+            } else {
+                // Sinon, on le supprime
+                $event->getForm()->remove('published');
+            }
+        }
+        );
     }
 
     /**
