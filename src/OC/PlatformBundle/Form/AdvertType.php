@@ -22,8 +22,7 @@ class AdvertType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        // Arbitrairement, on récupère toutes les catégories qui commencent par "D"
-
+        // Arbitrairement, on récupère toutes les catégories qui commencent par "D" D%
         $pattern = 'c%';
 
         $builder
@@ -33,17 +32,13 @@ class AdvertType extends AbstractType {
                 ->add('content', TextareaType::class)
                 ->add('published', CheckboxType::class, array('required' => false))
                 ->add('image', ImageType::class) // Ajoutez cette ligne
-
                 /*
 
                  * Rappel :
 
                  * * - 1er argument : nom du champ, ici « categories », car c'est le nom de l'attribut
-
                  * * - 2e argument : type du champ, ici « CollectionType » qui est une liste de quelque chose
-
                  * * - 3e argument : tableau d'options du champ
-
                  */
 //                ->add('categories', CollectionType::class, array(
 //                    'entry_type' => CategoryType::class,
@@ -60,7 +55,6 @@ class AdvertType extends AbstractType {
                     'choice_label' => 'name',
                     'multiple' => true,
                     'query_builder' => function(CategoryRepository $repository) use($pattern) {
-
                         return $repository->getLikeQueryBuilder($pattern);
                     }
                 ))

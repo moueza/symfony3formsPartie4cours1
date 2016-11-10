@@ -15,12 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-
-
-
 use OC\PlatformBundle\Form\AdvertType;
-
-
 
 class AdvertController extends Controller {
 
@@ -29,26 +24,26 @@ class AdvertController extends Controller {
             throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
         }
 
-        // Ici je fixe le nombre d'annonces par page à 3
-        // Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
+// Ici je fixe le nombre d'annonces par page à 3
+// Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
         $nbPerPage = 3;
 
-        // On récupère notre objet Paginator
+// On récupère notre objet Paginator
         $listAdverts = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('OCPlatformBundle:Advert')
                 ->getAdverts($page, $nbPerPage)
         ;
 
-        // On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces
+// On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces
         $nbPages = ceil(count($listAdverts) / $nbPerPage);
 
-        // Si la page n'existe pas, on retourne une 404
+// Si la page n'existe pas, on retourne une 404
         if ($page > $nbPages) {
             throw $this->createNotFoundException("La page " . $page . " n'existe pas.");
         }
 
-        // On donne toutes les informations nécessaires à la vue
+// On donne toutes les informations nécessaires à la vue
         return $this->render('OCPlatformBundle:Advert:index.html.twig', array(
                     'listAdverts' => $listAdverts,
                     'nbPages' => $nbPages,
@@ -59,22 +54,22 @@ class AdvertController extends Controller {
     public function viewAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        // Pour récupérer une seule annonce, on utilise la méthode find($id)
+// Pour récupérer une seule annonce, on utilise la méthode find($id)
         $advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
 
-        // $advert est donc une instance de OC\PlatformBundle\Entity\Advert
-        // ou null si l'id $id n'existe pas, d'où ce if :
+// $advert est donc une instance de OC\PlatformBundle\Entity\Advert
+// ou null si l'id $id n'existe pas, d'où ce if :
         if (null === $advert) {
             throw new NotFoundHttpException("L'annonce d'id " . $id . " n'existe pas.");
         }
 
-        // Récupération de la liste des candidatures de l'annonce
+// Récupération de la liste des candidatures de l'annonce
         $listApplications = $em
                 ->getRepository('OCPlatformBundle:Application')
                 ->findBy(array('advert' => $advert))
         ;
 
-        // Récupération des AdvertSkill de l'annonce
+// Récupération des AdvertSkill de l'annonce
         $listAdvertSkills = $em
                 ->getRepository('OCPlatformBundle:AdvertSkill')
                 ->findBy(array('advert' => $advert))
@@ -87,95 +82,81 @@ class AdvertController extends Controller {
         ));
     }
 
+    /** platform/add */
     public function addAction(Request $request) {
-
-        // On crée un objet Advert
-
+// On crée un objet Advert
         $advert = new Advert();
-        $form = $this->createForm(AdvertType::class, $advert);
-
-
-        // Si la requête est en POST
-
+        $form = $this->createForm(AdvertType::class, $advert); //++++
+// Si la requête est en POST
         if ($request->isMethod('POST')) {
-
-            // On fait le lien Requête <-> Formulaire
-            // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-
+// On fait le lien Requête <-> Formulaire
+// À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
             $form->handleRequest($request);
-
-
-            // On vérifie que les valeurs entrées sont correctes
-            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-
+// On vérifie que les valeurs entrées sont correctes
+// (Nous verrons la validation des objets en détail dans le prochain chapitre)
             if ($form->isValid()) {
-
-                // On enregistre notre objet $advert dans la base de données, par exemple
-
+// On enregistre notre objet $advert dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
-
                 $em->persist($advert);
-
                 $em->flush();
-
-
                 $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-
-
-                // On redirige vers la page de visualisation de l'annonce nouvellement créée
-
+// On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
             }
         }
 
 
-        // À ce stade, le formulaire n'est pas valide car :
-        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
-        // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
-
+// À ce stade, le formulaire n'est pas valide car :
+// - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
+// - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('OCPlatformBundle:Advert:add.html.twig', array(
                     'form' => $form->createView(),
         ));
     }
 
+    /** platform/edit/{id} */
     public function editAction($id, Request $request) {
         $em = $this->getDoctrine()->getManager();
-
         $advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
-
         if (null === $advert) {
             throw new NotFoundHttpException("L'annonce d'id " . $id . " n'existe pas.");
         }
 
-        // Ici encore, il faudra mettre la gestion du formulaire
+// Ici encore, il faudra mettre la gestion du formulaire
+        $form = $this->createForm(AdvertType::class, $advert); //+++
 
         if ($request->isMethod('POST')) {
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
+// On fait le lien Requête <-> Formulaire
+// À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+// On vérifie que les valeurs entrées sont correctes
+// (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+// On enregistre notre objet $advert dans la base de données, par exemple
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($advert);
+                $em->flush();
 
-            return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
+                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
+                return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
+            }
         }
-
         return $this->render('OCPlatformBundle:Advert:edit.html.twig', array(
-                    'advert' => $advert
+                    'advert' => $advert, 'form' => $form->createView()
         ));
     }
 
     public function deleteAction($id) {
         $em = $this->getDoctrine()->getManager();
-
         $advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
-
         if (null === $advert) {
             throw new NotFoundHttpException("L'annonce d'id " . $id . " n'existe pas.");
         }
-
-        // On boucle sur les catégories de l'annonce pour les supprimer
+// On boucle sur les catégories de l'annonce pour les supprimer
         foreach ($advert->getCategories() as $category) {
             $advert->removeCategory($category);
         }
-
         $em->flush();
-
         return $this->render('OCPlatformBundle:Advert:delete.html.twig');
     }
 

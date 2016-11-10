@@ -15,69 +15,71 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815 = $this->env->getExtension("native_profiler");
-        $__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815->enter($__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "OCPlatformBundle:Advert:form.html.twig"));
+        $__internal_460faf45fc17b4e145f3830c354dca3f55829f5e961b4a0b98436d329130d36a = $this->env->getExtension("native_profiler");
+        $__internal_460faf45fc17b4e145f3830c354dca3f55829f5e961b4a0b98436d329130d36a->enter($__internal_460faf45fc17b4e145f3830c354dca3f55829f5e961b4a0b98436d329130d36a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "OCPlatformBundle:Advert:form.html.twig"));
 
         // line 2
         echo "
 ";
         // line 6
-        echo "
-<h3>Formulaire d'annonce</h3>
+        echo "<h3>Formulaire d'annonce</h3>
 
 
 <div class=\"well\">
 
 
     ";
-        // line 13
+        // line 12
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("attr" => array("class" => "form-horizontal")));
         echo "
 
     ";
-        // line 15
+        // line 14
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "categories", array()), 'row');
         echo "
     <a href=\"#\" id=\"add_category\" class=\"btn btn-default\">Ajouter une catégorie</a>
 
 
     ";
-        // line 20
-        echo "
-    ";
-        // line 21
+        // line 19
+        echo "    ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'errors');
         echo "
 
 
-    ";
-        // line 25
-        echo "
-    ";
-        // line 26
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "date", array()), 'row');
-        echo "
-
 
     ";
-        // line 30
+        // line 23
+        if ($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "date", array(), "any", true, true)) {
+            // line 24
+            echo "        ";
+            // line 25
+            echo "        ";
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "date", array()), 'row');
+            echo "
+    ";
+        }
+        // line 27
+        echo "
+    ";
+        // line 29
         echo "
     <div class=\"form-group\">
 
         ";
-        // line 34
+        // line 33
         echo "
         ";
-        // line 35
+        // line 34
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "title", array()), 'label', array("label_attr" => array("class" => "col-sm-2 control-label"), "label" => "Titre de l'annonce"));
         echo "
 
 
         ";
-        // line 39
+        // line 38
         echo "
         ";
-        // line 40
+        // line 39
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "title", array()), 'errors');
         echo "
 
@@ -85,10 +87,10 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
         <div class=\"col-sm-10\">
 
             ";
-        // line 46
+        // line 45
         echo "
             ";
-        // line 47
+        // line 46
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "title", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
 
@@ -98,24 +100,24 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
 
     ";
-        // line 55
+        // line 54
         echo "
     <div class=\"form-group\">
 
         ";
-        // line 58
+        // line 57
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "content", array()), 'label', array("label_attr" => array("class" => "col-sm-2 control-label"), "label" => "Contenu de l'annonce"));
         echo "
 
         ";
-        // line 60
+        // line 59
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "title", array()), 'errors');
         echo "
 
         <div class=\"col-sm-10\">
 
             ";
-        // line 64
+        // line 63
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "content", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
 
@@ -125,33 +127,33 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
 
     ";
-        // line 71
+        // line 70
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "author", array()), 'row');
         echo "
 
     ";
-        // line 73
+        // line 72
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "published", array()), 'row');
         echo "
 
 
     ";
-        // line 77
+        // line 76
         echo "
     ";
-        // line 78
+        // line 77
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "save", array()), 'widget', array("attr" => array("class" => "btn btn-primary")));
         echo "
 
 
     ";
-        // line 84
+        // line 83
         echo "    ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
 
     ";
-        // line 87
+        // line 86
         echo "    ";
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
@@ -160,11 +162,11 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
 
 ";
-        // line 94
+        // line 93
         echo "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
 
 ";
-        // line 97
+        // line 96
         echo "<script type=\"text/javascript\">
     \$(document).ready(function () {
         // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
@@ -233,7 +235,7 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
     });
 </script>";
         
-        $__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815->leave($__internal_28e5dbbf4ec2b86f691c5f572a0b07b1cb9462ed3463f76aff6daf561d8d3815_prof);
+        $__internal_460faf45fc17b4e145f3830c354dca3f55829f5e961b4a0b98436d329130d36a->leave($__internal_460faf45fc17b4e145f3830c354dca3f55829f5e961b4a0b98436d329130d36a_prof);
 
     }
 
@@ -249,7 +251,7 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 
     public function getDebugInfo()
     {
-        return array (  168 => 97,  164 => 94,  155 => 87,  149 => 84,  143 => 78,  140 => 77,  134 => 73,  129 => 71,  119 => 64,  112 => 60,  107 => 58,  102 => 55,  92 => 47,  89 => 46,  81 => 40,  78 => 39,  72 => 35,  69 => 34,  64 => 30,  58 => 26,  55 => 25,  49 => 21,  46 => 20,  39 => 15,  34 => 13,  25 => 6,  22 => 2,);
+        return array (  170 => 96,  166 => 93,  157 => 86,  151 => 83,  145 => 77,  142 => 76,  136 => 72,  131 => 70,  121 => 63,  114 => 59,  109 => 57,  104 => 54,  94 => 46,  91 => 45,  83 => 39,  80 => 38,  74 => 34,  71 => 33,  66 => 29,  63 => 27,  57 => 25,  55 => 24,  53 => 23,  45 => 19,  38 => 14,  33 => 12,  25 => 6,  22 => 2,);
     }
 }
 /* {# src/OC/PlatformBundle/Resources/views/Advert/form.html.twig #}*/
@@ -257,7 +259,6 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 /* {# Cette vue n'hérite de personne, elle sera incluse par d'autres vues qui,*/
 /*    elles, hériteront probablement du layout. Je dis « probablement » car,*/
 /*    ici pour cette vue, on n'en sait rien et c'est une info qui ne nous concerne pas. #}*/
-/* */
 /* <h3>Formulaire d'annonce</h3>*/
 /* */
 /* */
@@ -271,14 +272,14 @@ class __TwigTemplate_b128d11ee4f421a369c409271fb23f5239159b5102f9e06708d8962b571
 /* */
 /* */
 /*     {# Les erreurs générales du formulaire. #}*/
-/* */
 /*     {{ form_errors(form) }}*/
 /* */
 /* */
-/*     {# Génération du label + error + widget pour un champ. #}*/
 /* */
-/*     {{ form_row(form.date) }}*/
-/* */
+/*     {% if form.date is defined %}*/
+/*         {# Génération du label + error + widget pour un champ. #}*/
+/*         {{ form_row(form.date) }}*/
+/*     {% endif %}*/
 /* */
 /*     {# Génération manuelle et éclatée : #}*/
 /* */

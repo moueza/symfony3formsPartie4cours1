@@ -3,7 +3,6 @@
 {# Cette vue n'hérite de personne, elle sera incluse par d'autres vues qui,
    elles, hériteront probablement du layout. Je dis « probablement » car,
    ici pour cette vue, on n'en sait rien et c'est une info qui ne nous concerne pas. #}
-
 <h3>Formulaire d'annonce</h3>
 
 
@@ -17,14 +16,14 @@
 
 
     {# Les erreurs générales du formulaire. #}
-
     {{ form_errors(form) }}
 
 
-    {# Génération du label + error + widget pour un champ. #}
 
-    {{ form_row(form.date) }}
-
+    {% if form.date is defined %}
+        {# Génération du label + error + widget pour un champ. #}
+        {{ form_row(form.date) }}
+    {% endif %}
 
     {# Génération manuelle et éclatée : #}
 
