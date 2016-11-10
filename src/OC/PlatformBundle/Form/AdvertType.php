@@ -13,6 +13,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use OC\PlatformBundle\Repository\CategoryRepository;
+
 class AdvertType extends AbstractType {
 
     /**
@@ -22,7 +24,7 @@ class AdvertType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         // Arbitrairement, on récupère toutes les catégories qui commencent par "D"
 
-        $pattern = 'D%';
+        $pattern = 'c%';
 
         $builder
                 ->add('date', DateTimeType::class)
