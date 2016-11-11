@@ -4,6 +4,8 @@
 namespace OC\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+// N'oubliez pas ce use :
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Table(name="oc_image")
@@ -66,5 +68,27 @@ class Image
   public function getAlt()
   {
     return $this->alt;
+  }
+  
+  
+  private $file;
+
+  
+
+  public function getFile()
+
+  {
+
+    return $this->file;
+
+  }
+
+
+  public function setFile(UploadedFile $file = null)
+
+  {
+
+    $this->file = $file;
+
   }
 }

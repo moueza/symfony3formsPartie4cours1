@@ -168,3 +168,13 @@ b5fc75,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/a
 dd628c,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/advert/21,1478766520,,200
 cb3252,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478766535,27f739,200
 27f739,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/advert/21,1478766535,,200
+a0da17,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478839544,b6b43b,200
+b6b43b,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478839544,,500
+9ded72,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478839674,aba619,200
+aba619,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478839674,,500
+6b0f40,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478843239,8faaa3,200
+8faaa3,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478843239,,500
+8c4f49,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478843334,a49b77,200
+a49b77,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478843334,,500
+989257,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478844002,17dab3,200
+17dab3,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478844002,,200
