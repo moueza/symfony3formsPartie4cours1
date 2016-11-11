@@ -178,3 +178,13 @@ aba619,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/ap
 a49b77,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478843334,,500
 989257,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478844002,17dab3,200
 17dab3,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478844002,,200
+a11131,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478845230,ec62ba,200
+ec62ba,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478845230,,200
+cb51c9,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478845874,b373b6,200
+b373b6,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478845874,,200
+339265,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478845950,,302
+c9bd88,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478845957,95a65e,200
+95a65e,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/advert/22,1478845957,,200
+9d0448,127.0.0.1,POST,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/add,1478845999,,302
+092475,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DOCPlatformBundle%253AAdvert%253Amenu,1478846005,8aa9c8,200
+8aa9c8,127.0.0.1,GET,http://localhost/OpenclassroomsSYMFONY/symfony3forms/web/app_dev.php/platform/advert/23,1478846005,,200
