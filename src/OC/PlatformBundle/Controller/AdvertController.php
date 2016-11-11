@@ -95,7 +95,7 @@ class AdvertController extends Controller {
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             // Ajoutez cette ligne :
             // c'est elle qui déplace l'image là où on veut les stocker
-            $advert->getImage()->upload();
+           // $advert->getImage()->upload();//plu besoin par les evenements
 
 
 
