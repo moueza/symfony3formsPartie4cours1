@@ -82,6 +82,7 @@ class AdvertController extends Controller {
         ));
     }
 
+    
     /** platform/add */
     public function addAction(Request $request) {
 // On crée un objet Advert
@@ -95,11 +96,7 @@ class AdvertController extends Controller {
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             // Ajoutez cette ligne :
             // c'est elle qui déplace l'image là où on veut les stocker
-           // $advert->getImage()->upload();//plu besoin par les evenements
-
-
-
-
+            // $advert->getImage()->upload();//plu besoin par les evenements
 // On enregistre notre objet $advert dans la base de données, par exemple
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
@@ -129,25 +126,24 @@ class AdvertController extends Controller {
 
 // Ici encore, il faudra mettre la gestion du formulaire
         $form = $this->createForm(AdvertType::class, $advert); //+++
-
-        if ($request->isMethod('POST')) {
 // On fait le lien Requête <-> Formulaire
 // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 // On vérifie que les valeurs entrées sont correctes
 // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-            if ($form->isValid()) {
+        if (($request->isMethod('POST')) && ($form->isValid())) {
 // On enregistre notre objet $advert dans la base de données, par exemple
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($advert);
-                $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($advert);
+            $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
-                return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
-            }
+            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
+            return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
         }
+
         return $this->render('OCPlatformBundle:Advert:edit.html.twig', array(
-                    'advert' => $advert, 'form' => $form->createView()
+                    'advert' => $advert,
+                    'form' => $form->createView()
         ));
     }
 
