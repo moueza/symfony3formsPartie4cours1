@@ -6,8 +6,6 @@ namespace OC\PlatformBundle\Controller;
 
 use OC\PlatformBundle\Entity\Advert;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-//use Symfony\Component\HttpFoundation\Request;
-//use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -82,7 +80,6 @@ class AdvertController extends Controller {
         ));
     }
 
-    
     /** platform/add */
     public function addAction(Request $request) {
 // On crée un objet Advert
