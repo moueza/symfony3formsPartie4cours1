@@ -18,6 +18,8 @@ use Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\Config\Resource\ResourceInterface;
@@ -47,11 +49,6 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * @var Definition[]
      */
     private $definitions = array();
-
-    /**
-     * @var Definition[]
-     */
-    private $obsoleteDefinitions = array();
 
     /**
      * @var Alias[]
@@ -259,7 +256,9 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         }
 
         do {
-            $this->addResource(new FileResource($class->getFileName()));
+            if (is_file($class->getFileName())) {
+                $this->addResource(new FileResource($class->getFileName()));
+            }
         } while ($class = $class->getParentClass());
 
         return $this;
@@ -342,21 +341,8 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     {
         $id = strtolower($id);
 
-        if ($this->isFrozen()) {
-            // setting a synthetic service on a frozen container is alright
-            if (
-                (!isset($this->definitions[$id]) && !isset($this->obsoleteDefinitions[$id]))
-                    ||
-                (isset($this->definitions[$id]) && !$this->definitions[$id]->isSynthetic())
-                    ||
-                (isset($this->obsoleteDefinitions[$id]) && !$this->obsoleteDefinitions[$id]->isSynthetic())
-            ) {
-                throw new BadMethodCallException(sprintf('Setting service "%s" on a frozen container is not allowed.', $id));
-            }
-        }
-
-        if (isset($this->definitions[$id])) {
-            $this->obsoleteDefinitions[$id] = $this->definitions[$id];
+        if ($this->isFrozen() && (!isset($this->definitions[$id]) || !$this->definitions[$id]->isSynthetic())) {
+            throw new BadMethodCallException(sprintf('Setting service "%s" for an unknown or non-synthetic service definition on a frozen container is not allowed.', $id));
         }
 
         unset($this->definitions[$id], $this->aliasDefinitions[$id]);
@@ -396,8 +382,9 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      *
      * @return object The associated service
      *
-     * @throws InvalidArgumentException when no definitions are available
-     * @throws LogicException           when a circular dependency is detected
+     * @throws InvalidArgumentException          when no definitions are available
+     * @throws ServiceCircularReferenceException When a circular reference is detected
+     * @throws ServiceNotFoundException          When the service is not defined
      * @throws \Exception
      *
      * @see Reference
@@ -410,13 +397,13 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
             return $service;
         }
 
-        if (!array_key_exists($id, $this->definitions) && isset($this->aliasDefinitions[$id])) {
+        if (!isset($this->definitions[$id]) && isset($this->aliasDefinitions[$id])) {
             return $this->get($this->aliasDefinitions[$id]);
         }
 
         try {
             $definition = $this->getDefinition($id);
-        } catch (InvalidArgumentException $e) {
+        } catch (ServiceNotFoundException $e) {
             if (ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE !== $invalidBehavior) {
                 return;
             }
@@ -453,7 +440,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * parameter, the value will still be 'bar' as defined in the ContainerBuilder
      * constructor.
      *
-     * @param ContainerBuilder $container The ContainerBuilder instance to merge.
+     * @param ContainerBuilder $container The ContainerBuilder instance to merge
      *
      * @throws BadMethodCallException When this ContainerBuilder is frozen
      */
@@ -746,7 +733,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      */
     public function hasDefinition($id)
     {
-        return array_key_exists(strtolower($id), $this->definitions);
+        return isset($this->definitions[strtolower($id)]);
     }
 
     /**
@@ -756,14 +743,14 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      *
      * @return Definition A Definition instance
      *
-     * @throws InvalidArgumentException if the service definition does not exist
+     * @throws ServiceNotFoundException if the service definition does not exist
      */
     public function getDefinition($id)
     {
         $id = strtolower($id);
 
-        if (!array_key_exists($id, $this->definitions)) {
-            throw new InvalidArgumentException(sprintf('The service definition "%s" does not exist.', $id));
+        if (!isset($this->definitions[$id])) {
+            throw new ServiceNotFoundException($id);
         }
 
         return $this->definitions[$id];
@@ -778,7 +765,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      *
      * @return Definition A Definition instance
      *
-     * @throws InvalidArgumentException if the service definition does not exist
+     * @throws ServiceNotFoundException if the service definition does not exist
      */
     public function findDefinition($id)
     {
@@ -939,7 +926,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      *
      * @param string $name The tag name
      *
-     * @return array An array of tags with the tagged service as key, holding a list of attribute arrays.
+     * @return array An array of tags with the tagged service as key, holding a list of attribute arrays
      */
     public function findTaggedServiceIds($name)
     {
@@ -995,7 +982,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     /**
      * Returns the Service Conditionals.
      *
-     * @param mixed $value An array of conditionals to return.
+     * @param mixed $value An array of conditionals to return
      *
      * @return array An array of Service conditionals
      */

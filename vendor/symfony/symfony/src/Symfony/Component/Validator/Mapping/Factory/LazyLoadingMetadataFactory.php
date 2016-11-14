@@ -14,8 +14,6 @@ namespace Symfony\Component\Validator\Mapping\Factory;
 use Symfony\Component\Validator\Exception\NoSuchMetadataException;
 use Symfony\Component\Validator\Mapping\Cache\CacheInterface;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Mapping\ClassMetadataInterface;
-use Symfony\Component\Validator\Mapping\Loader\LoaderChain;
 use Symfony\Component\Validator\Mapping\Loader\LoaderInterface;
 
 /**
@@ -116,9 +114,9 @@ class LazyLoadingMetadataFactory implements MetadataFactoryInterface
             $metadata->mergeConstraints($this->getMetadataFor($parent->name));
         }
 
-        // Include constraints from all implemented interfaces
+        // Include constraints from all implemented interfaces that have not been processed via parent class yet
         foreach ($metadata->getReflectionClass()->getInterfaces() as $interface) {
-            if ('Symfony\Component\Validator\GroupSequenceProviderInterface' === $interface->name) {
+            if ('Symfony\Component\Validator\GroupSequenceProviderInterface' === $interface->name || ($parent && $parent->implementsInterface($interface->name))) {
                 continue;
             }
             $metadata->mergeConstraints($this->getMetadataFor($interface->name));

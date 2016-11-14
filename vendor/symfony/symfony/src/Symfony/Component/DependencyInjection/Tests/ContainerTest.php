@@ -142,6 +142,14 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($sc->has('foo'), '->set() with null service resets the service');
     }
 
+    public function testSetReplacesAlias()
+    {
+        $c = new ProjectServiceContainer();
+
+        $c->set('alias', $foo = new \stdClass());
+        $this->assertSame($foo, $c->get('alias'), '->set() replaces an existing alias');
+    }
+
     public function testGet()
     {
         $sc = new ProjectServiceContainer();
@@ -169,7 +177,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     {
         $sc = new ProjectServiceContainer();
         $sc->set('foo', $foo = new \stdClass());
-        $sc->set('bar', $foo = new \stdClass());
         $sc->set('baz', $foo = new \stdClass());
 
         try {
@@ -302,7 +309,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
 class ProjectServiceContainer extends Container
 {
-    public $__bar, $__foo_bar, $__foo_baz;
+    public $__bar;
+    public $__foo_bar;
+    public $__foo_baz;
 
     public function __construct()
     {
