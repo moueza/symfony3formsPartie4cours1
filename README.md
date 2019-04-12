@@ -1,4 +1,8 @@
 # OCPlatform
+From git clone https://github.com/winzou/OCPlatform
+
+
+
 Code source de la plateforme d'annonce construite grâce au [MOOC OpenClassrooms](https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony2).
 ### [Ce cours Symfony est également disponible en livre](http://www.eyrolles.com/Informatique/Livre/developpez-votre-site-web-avec-le-framework-symfony2-9791090085428) [et en ebook](https://openclassrooms.com/ebooks/developpez-votre-site-web-avec-le-framework-symfony2)
 
